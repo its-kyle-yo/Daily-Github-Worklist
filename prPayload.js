@@ -2,23 +2,21 @@
 //   Serves a daily PR report of PR's that have not been updated within 24-72 + hours
 //
 // Dependencies:
-//   None
+//   cronjob
+//   request
+//   lodash
 //
 // Configuration:
 //    GITHUB_TOKEN
 //    HUBOT_SLACK_TOKEN
 // Commands:
-//   candi set repos
-//   candi test - sends the daily PR payloads to ALL users
-//   candi show github users - displays all current users added to lsit
-//   candi add (Github User Name) to github users - adds the current slack user to the github user list as the provided user name
-//   candy remove (Slack User Name) from github users - removes slack user from github users
-//
+//   show my prs - Sends only your pr's
+//   
 // Author:
 //    YetiAllMighty
 
 module.exports = function(robot) {
-    var orgName = "100health";
+    var orgName = "";
     var ghRepos, ghUsers;
     var request = require("request");
     var cronJob = require('cron').CronJob;
